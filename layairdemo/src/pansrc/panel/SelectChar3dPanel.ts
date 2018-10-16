@@ -12,9 +12,21 @@ class SelectChar3dPanel extends Laya.Sprite {
         this.layaSceneLevel.addMaskUi(664, 520)
         this.addChild(this.layaSceneLevel)
 
-      
-        this.addGridLineSprite()
+        this.charItem = new Array
+        for (var i: number = 0; i < 10; i++) {
+            var tempChar: Game3dChar = this.addModelChar();
+            tempChar.px = -0 + i * 100;
 
+            tempChar.px = random(400) - 200;
+            tempChar.pz = random(400) - 200;
+          //  tempChar.nameEnable = true;
+           // tempChar.bloodEnable = true;
+            this.charItem.push(tempChar)
+        }
+        this.addGridLineSprite()
+        this.loadSkill()
+        this.ape.on(Pan3d.MouseType.MouseDown, this, this.onStartDrag);
+        scenedis.ModelshowMouseManager.getInstance().addMouseEvent();
     }
     private charItem: Array<Game3dChar>
     private addGridLineSprite(): void {

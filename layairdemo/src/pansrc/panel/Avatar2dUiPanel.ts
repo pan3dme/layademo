@@ -18,13 +18,11 @@ class SceneUiPanel extends Laya.Sprite {
         this.layaSceneLevel = new BaseLaya3dSprite();
         this.addChild(this.layaSceneLevel)
         this.uiLayaSceneChar = this.addModelChar();
-         this.uiLayaSceneChar.nameEnable = true
+        this.uiLayaSceneChar.nameEnable = true
         this.uiLayaSceneChar.bloodEnable = true
-      this.addModelChar();
 
-       this.ape.on(Pan3d.MouseType.MouseDown, this, this.onStartDrag);
 
-  
+        this.ape.on(Pan3d.MouseType.MouseDown, this, this.onStartDrag);
     }
     private uiLayaSceneChar: Game2dChar
     
@@ -46,8 +44,8 @@ class SceneUiPanel extends Laya.Sprite {
         }
         */
 
-        this.uiLayaSceneChar.moveTopos(new Pan3d.Vector2D((this.mouseX - this.ape.x)* Laya.stage.scaleX, (this.mouseY - this.ape.y)* Laya.stage.scaleY));  //坐标
-    //    this.ape.showJumpText(this.layaSceneLevel.scene, new Pan3d.Vector3D(this.uiLayaSceneChar.px, this.uiLayaSceneChar.py, this.uiLayaSceneChar.pz))
+        this.uiLayaSceneChar.moveTopos(new Pan3d.Vector2D(this.mouseX - this.ape.x, this.mouseY - this.ape.y));  //坐标
+        this.ape.showJumpText(this.layaSceneLevel.scene, new Pan3d.Vector3D(this.uiLayaSceneChar.px, this.uiLayaSceneChar.py, this.uiLayaSceneChar.pz))
 
 
         /*
@@ -63,10 +61,10 @@ class SceneUiPanel extends Laya.Sprite {
     private addModelChar(): Game2dChar {
         var $baseChar: Game2dChar = new Game2dChar();
         this.layaSceneLevel.scene.addMovieDisplay($baseChar);
-        $baseChar.setRoleUrl(getRoleUrl("erchiyuan004"));
-        // $baseChar.setMount("4104");
-        // $baseChar.setWing("902");
-        // $baseChar.setWeaponByAvatar(50011);
+        $baseChar.setRoleUrl(getRoleUrl("5103"));
+        $baseChar.setMount("4104");
+        $baseChar.setWing("902");
+        $baseChar.setWeaponByAvatar(50011);
         $baseChar.play(Pan3d.CharAction.STAND_MOUNT);
         $baseChar.forceRotationY = 145
         $baseChar.set2dPos(400, 200);  //坐标

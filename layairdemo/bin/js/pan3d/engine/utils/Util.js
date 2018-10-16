@@ -9,9 +9,7 @@ function angle2radian(value) {
 }
 function makeImage() {
     var _img = new Image();
-    if (_img.setAttribute) {
-        _img.setAttribute("crossOrigin", "anonymous");
-    }
+    _img.setAttribute("crossOrigin", "anonymous");
     return _img;
 }
 var keyChi = [

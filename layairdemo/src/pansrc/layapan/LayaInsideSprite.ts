@@ -194,21 +194,6 @@ module layapan {
                 return 
             }
             this.inited=true;
-/*
-            let Laya_SubmitOtherIBVB_renderSubmit=Laya.SubmitOtherIBVB.prototype.renderSubmit;
-            Laya.SubmitOtherIBVB.prototype.renderSubmit = function (): number {
-             
-                    this._vb.bind_upload(this._ib);
-
-                    this._shader._offset=this.offset;
-                    this._shaderValue.refresh();
-                    this._shader.upload(this._shaderValue);
-                    this._shader._offset=0;
- 
-                    Laya.BaseShader.activeShader=null;
-                    return 1;
-            }
-            */
 
             let context = Laya.Render.context.ctx as Laya.WebGLContext2D;
             context.submitElement = (start: number, end: number): void => {//重写laya的渲染队例
@@ -243,6 +228,10 @@ module layapan {
        
         }
         protected initData(): void {
+            if (!layapan.LayaScene2dInit.isConfig) {
+                layapan.LayaScene2dInit.initData();
+            }
+
             Pan3dInSideLaya.overrideMethods();
             this.customRenderEnable = true;
             this.scene = new LayaOverride2dSceneManager();

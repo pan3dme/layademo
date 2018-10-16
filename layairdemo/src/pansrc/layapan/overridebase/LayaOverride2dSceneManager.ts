@@ -1,6 +1,5 @@
 ﻿module layapan {
     import Display3dMovie = Pan3d.Display3dMovie;
-    import Scene_data=Pan3d.Scene_data
     export class LayaOverride2dSceneManager extends scene3d.OverrideSceneManager {
         private static sceneNum: number=0
         constructor() {
@@ -68,7 +67,7 @@
                 return;
             }
           
-            var $skill: layapan.OverrideSkill = this.skillManager.getSkill(getSkillUrl($skillfile), "skill_005");
+            var $skill: layapan.OverrideSkill = this.skillManager.getSkill(getSkillUrl($skillfile), "skill_01");
             if (!$skill.keyAry) {
                 return;
             }
@@ -84,9 +83,6 @@
         }
         public cameraMatrix: Pan3d.Matrix3D;
         public viewMatrx3D:Pan3d.Matrix3D;
-
-
-        private skipNum:number=0
         public upFrame(): void {
             Pan3d.Scene_data.context3D._contextSetTest.clear();
             if (isNaN(this._time)) {
@@ -104,22 +100,17 @@
                     this.updateStaticDiplay();
                     this.updateSpriteDisplay();
                     this.updateMovieDisplay();
-        
                     this.shadowManager.update()
                     Pan3d.Scene_data.context3D.setWriteDepth(false);
                     this.particleManager.update();
- 
-            this.bloodManager.update();
-   
-            
+                    this.bloodManager.update();
                     Pan3d.Scene_data.context3D.setBlendParticleFactors(0)
                     Pan3d.Scene_data.context3D.setWriteDepth(true);
                     Pan3d.Scene_data.context3D.setWriteDepth(false);
                 }
                 Pan3d.Scene_data.context3D.setDepthTest(false);
                 Pan3d.UIManager.getInstance().update();
-                 Pan3d.Scene_data.context3D._contextSetTest.clear();
- 
+
                 this.cameraMatrix = Pan3d.Scene_data.cam3D.cameraMatrix.clone();
                 this.viewMatrx3D = Pan3d.Scene_data.viewMatrx3D.clone();
             }

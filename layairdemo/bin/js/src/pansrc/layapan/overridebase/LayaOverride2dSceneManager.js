@@ -9,7 +9,6 @@ var layapan;
         __extends(LayaOverride2dSceneManager, _super);
         function LayaOverride2dSceneManager() {
             var _this = _super.call(this) || this;
-            _this.skipNum = 0;
             _this.particleManager = new layapan.LayaOverride2dParticleManager();
             _this.shadowManager = new layapan.LayaOverrideShadowManager();
             _this.skillManager = new layapan.LayaOverride2dSkillManager(_this);
@@ -66,7 +65,7 @@ var layapan;
             if (!$char._scene.ready) {
                 return;
             }
-            var $skill = this.skillManager.getSkill(getSkillUrl($skillfile), "skill_005");
+            var $skill = this.skillManager.getSkill(getSkillUrl($skillfile), "skill_01");
             if (!$skill.keyAry) {
                 return;
             }
@@ -105,7 +104,6 @@ var layapan;
                 }
                 Pan3d.Scene_data.context3D.setDepthTest(false);
                 Pan3d.UIManager.getInstance().update();
-                Pan3d.Scene_data.context3D._contextSetTest.clear();
                 this.cameraMatrix = Pan3d.Scene_data.cam3D.cameraMatrix.clone();
                 this.viewMatrx3D = Pan3d.Scene_data.viewMatrx3D.clone();
             }

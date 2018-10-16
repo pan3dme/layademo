@@ -7,13 +7,9 @@ var Pan3d;
         }
         Context3D.prototype.init = function ($caves) {
             //this.renderContext = $caves.getContext("experimental-webgl");
-            this.renderContext = laya.webgl.WebGL.mainContext;
-            if (!this.renderContext) {
-                var gl = $caves.getContext('webgl', { stencil: true, alpha: true, depth: true, antialias: false })
-                    || $caves.getContext('experimental-webgl', { stencil: true, alpha: true, depth: true, antialias: false });
-                this.renderContext = gl;
-                console.log("创建了pan3d的webgl");
-            }
+            var gl = $caves.getContext('webgl', { stencil: true, alpha: true, depth: true, antialias: false })
+                || $caves.getContext('experimental-webgl', { stencil: true, alpha: true, depth: true, antialias: false });
+            this.renderContext = gl;
             this._contextSetTest = new ContextSetTest();
         };
         Context3D.prototype.resetSize = function ($width, $height) {

@@ -216,21 +216,6 @@ var layapan;
                 return;
             }
             this.inited = true;
-            /*
-                        let Laya_SubmitOtherIBVB_renderSubmit=Laya.SubmitOtherIBVB.prototype.renderSubmit;
-                        Laya.SubmitOtherIBVB.prototype.renderSubmit = function (): number {
-                         
-                                this._vb.bind_upload(this._ib);
-            
-                                this._shader._offset=this.offset;
-                                this._shaderValue.refresh();
-                                this._shader.upload(this._shaderValue);
-                                this._shader._offset=0;
-             
-                                Laya.BaseShader.activeShader=null;
-                                return 1;
-                        }
-                        */
             var context = Laya.Render.context.ctx;
             context.submitElement = function (start, end) {
                 if (end > 0) {
@@ -252,6 +237,9 @@ var layapan;
             };
         };
         LayaInsideSprite.prototype.initData = function () {
+            if (!layapan.LayaScene2dInit.isConfig) {
+                layapan.LayaScene2dInit.initData();
+            }
             Pan3dInSideLaya.overrideMethods();
             this.customRenderEnable = true;
             this.scene = new layapan.LayaOverride2dSceneManager();

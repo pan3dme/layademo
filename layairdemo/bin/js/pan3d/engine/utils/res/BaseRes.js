@@ -20,7 +20,12 @@ var Pan3d;
             this._imgFun = $imgFun;
             var fileType = this._byte.readInt();
             if (fileType == BaseRes.IMG_TYPE) {
-                this.readImg();
+                if (Pan3d.Scene_data.supportBlob) {
+                    this.readImg();
+                }
+                else {
+                    this.readImgLow();
+                }
             }
             else if (fileType == BaseRes.OBJS_TYPE) {
                 this.readObj(this._byte);
@@ -50,19 +55,23 @@ var Pan3d;
             for (var i = 0; i < this.imgNum; i++) {
                 var url = Pan3d.Scene_data.fileRoot + this._byte.readUTF();
                 var imgSize = this._byte.readInt();
+                if (url.search(".jpng") != -1) {
+                    this.readJpngImg(url);
+                    continue;
+                }
                 var imgAryBuffer = this._byte.buffer.slice(this._byte.position, this._byte.position + imgSize);
                 this._byte.position += imgSize;
-                var img = makeImage();
+                var img = new Image();
                 img.url = url;
                 img.onload = function (evt) {
                     _this.loadImg(evt.target);
+                    var etimg = evt.target;
                 };
-                this.setUrlToImg(img, imgAryBuffer, url);
+                var t = url.substr(url.lastIndexOf('.') + 1).toLocaleLowerCase();
+                t = "jpg";
+                console.log(url + "readImg" + 'data:image/' + t + ';base64,');
+                img.src = 'data:image/' + t + ';base64,' + Pan3d.Base64.encode(imgAryBuffer);
             }
-        };
-        BaseRes.prototype.setUrlToImg = function (img, imgAryBuffer, url) {
-            // img.src = url;    //直接只读图片地址
-            img.src = 'data:image/' + "jpg" + ';base64,' + Pan3d.Base64.encode(imgAryBuffer); //将二进制作转在图片
         };
         BaseRes.prototype.readJpngImg = function ($url) {
             var _this = this;

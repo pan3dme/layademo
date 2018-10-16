@@ -13,7 +13,20 @@ var SelectChar3dPanel = (function (_super) {
         _this.layaSceneLevel = new Scene3dLaya3dSprite();
         _this.layaSceneLevel.addMaskUi(664, 520);
         _this.addChild(_this.layaSceneLevel);
+        _this.charItem = new Array;
+        for (var i = 0; i < 10; i++) {
+            var tempChar = _this.addModelChar();
+            tempChar.px = -0 + i * 100;
+            tempChar.px = random(400) - 200;
+            tempChar.pz = random(400) - 200;
+            //  tempChar.nameEnable = true;
+            // tempChar.bloodEnable = true;
+            _this.charItem.push(tempChar);
+        }
         _this.addGridLineSprite();
+        _this.loadSkill();
+        _this.ape.on(Pan3d.MouseType.MouseDown, _this, _this.onStartDrag);
+        scenedis.ModelshowMouseManager.getInstance().addMouseEvent();
         return _this;
     }
     SelectChar3dPanel.prototype.addGridLineSprite = function () {

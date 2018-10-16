@@ -7,12 +7,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 var BaseLaya3dSprite = (function (_super) {
     __extends(BaseLaya3dSprite, _super);
     function BaseLaya3dSprite() {
-        var _this = this;
-        if (!layapan.LayaScene2dInit.isConfig) {
-            layapan.LayaScene2dInit.initData();
-        }
-        _this = _super.call(this) || this;
-        return _this;
+        return _super.call(this) || this;
     }
     BaseLaya3dSprite.prototype.upFrame = function () {
         Pan3d.Scene_data.context3D.setWriteDepth(true);
@@ -23,7 +18,7 @@ var BaseLaya3dSprite = (function (_super) {
         Pan3d.Scene_data.focus3D.rotationX = -45;
         Pan3d.Scene_data.cam3D.distance = 250;
         //这是是移动2D的基础坐标
-        scene2d.CanvasPostionModel.getInstance().tureMoveV2d = new Pan3d.Vector2D(this.x * Laya.stage.scaleX, this.y * Laya.stage.scaleY);
+        scene2d.CanvasPostionModel.getInstance().tureMoveV2d = new Pan3d.Vector2D(this.x, this.y);
         scene2d.CanvasPostionModel.getInstance().resetSize();
         Pan3d.Scene_data.context3D.renderContext.clear(Pan3d.Scene_data.context3D.renderContext.DEPTH_BUFFER_BIT); //重置深度
         Pan3d.MathClass.getCamView(Pan3d.Scene_data.cam3D, Pan3d.Scene_data.focus3D); //一定要角色帧渲染后再重置镜头矩阵

@@ -6,7 +6,7 @@ class Skill2dUiPanel extends Laya.Sprite {
         this.ape = new BaseWinPanel()
         this.addChild(this.ape);
 
-        var $imag: Laya.Image = new Laya.Image(Pan3d.Scene_data.fileRoot+"2dbg.jpg")
+        var $imag: Laya.Image = new Laya.Image("res/2dbg.jpg")
         $imag.x = 20
         $imag.y = 30
         this.ape.addChild($imag);
@@ -26,8 +26,8 @@ class Skill2dUiPanel extends Laya.Sprite {
 
     }
     private loadSkill(): void {
-        this.layaSceneLevel.scene.skillManager.preLoadSkill(getSkillUrl("erchijinen004"));
- 
+        this.layaSceneLevel.scene.skillManager.preLoadSkill(getSkillUrl("jichu_1"));
+        this.layaSceneLevel.scene.skillManager.preLoadSkill(getSkillUrl("jichu_2"));
     }
     private uiLayaSceneChar: layapan.LayaSceneChar
     render(context: Laya.RenderContext, x: number, y: number): void {
@@ -45,9 +45,9 @@ class Skill2dUiPanel extends Laya.Sprite {
         //鼠标按下开始拖拽(设置了拖动区域和超界弹回的滑动效果)
 
         this.uiLayaSceneChar.rotationY = random(360)
-        this.layaSceneLevel.scene.charPlaySkill(this.uiLayaSceneChar, "erchijinen004");
+        this.layaSceneLevel.scene.charPlaySkill(this.uiLayaSceneChar, "jichu_" + (Math.random() > 0.5 ? "1" : "2"));
 
-      //  this.ape.showJumpText(this.layaSceneLevel.scene, new Pan3d.Vector3D(this.uiLayaSceneChar.px, this.uiLayaSceneChar.py, this.uiLayaSceneChar.pz))
+        this.ape.showJumpText(this.layaSceneLevel.scene, new Pan3d.Vector3D(this.uiLayaSceneChar.px, this.uiLayaSceneChar.py, this.uiLayaSceneChar.pz))
     }
    
 
@@ -56,8 +56,9 @@ class Skill2dUiPanel extends Laya.Sprite {
     private addModelChar(): layapan.LayaSceneChar {
         var $baseChar: layapan.LayaSceneChar = new layapan.LayaSceneChar();
         this.layaSceneLevel.scene.addMovieDisplay($baseChar);
-        $baseChar.setRoleUrl(getRoleUrl("erchiyuan004"));
- 
+        $baseChar.setRoleUrl(getRoleUrl("50005"));
+        $baseChar.setWing("902");
+        $baseChar.setWeaponByAvatar(50011);
         return $baseChar
     }
 

@@ -1,21 +1,16 @@
 ﻿module Pan3d {
     export class Context3D {
-        public renderContext: any;
+        public renderContext: WebGLRenderingContext;
         public _contextSetTest: ContextSetTest;
         public init($caves: HTMLCanvasElement): void {
             //this.renderContext = $caves.getContext("experimental-webgl");
-this.renderContext=laya.webgl.WebGL.mainContext
-if(!this.renderContext){
 
-      var gl: any = $caves.getContext('webgl', { stencil: true, alpha: true, depth: true, antialias: false })
+            var gl: any = $caves.getContext('webgl', { stencil: true, alpha: true, depth: true, antialias: false })
                 || $caves.getContext('experimental-webgl', { stencil: true, alpha: true, depth: true, antialias: false });
             this.renderContext = gl;
-console.log("创建了pan3d的webgl")
 
+            this._contextSetTest = new ContextSetTest();
         }
-                    this._contextSetTest = new ContextSetTest();
-}
-      
 
 
         public resetSize($width: number, $height: number): void {

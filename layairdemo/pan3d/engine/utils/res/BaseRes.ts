@@ -36,9 +36,11 @@
             this._imgFun = $imgFun;
             var fileType: number = this._byte.readInt();
             if (fileType == BaseRes.IMG_TYPE) {
-              
+                if (Scene_data.supportBlob) {
                     this.readImg();
-             
+                } else {
+                    this.readImgLow();
+                }
             } else if (fileType == BaseRes.OBJS_TYPE) {
                 this.readObj(this._byte);
             } else if (fileType == BaseRes.MATERIAL_TYPE) {
@@ -66,29 +68,28 @@
             for (var i: number = 0; i < this.imgNum; i++) {
                 var url: string = Scene_data.fileRoot + this._byte.readUTF();
                 var imgSize: number = this._byte.readInt();
-            
+                if (url.search(".jpng") != -1) {
+                    this.readJpngImg(url);
+                    continue;
+                }
 
                 var imgAryBuffer: ArrayBuffer = this._byte.buffer.slice(this._byte.position, this._byte.position + imgSize);
                 this._byte.position += imgSize;
-                
-  
-                var img: any =makeImage()
+
+                var img: any = new Image();
                 img.url = url;
                 img.onload = (evt: Event) => {
                     this.loadImg(evt.target);
+                    var etimg: any = evt.target;
                 }
-               
-                this.setUrlToImg(img,imgAryBuffer,url)
+                var t = url.substr(url.lastIndexOf('.') + 1).toLocaleLowerCase();
+
+                t = "jpg"
+                console.log(url + "readImg" + 'data:image/' + t + ';base64,')
+                img.src = 'data:image/' + t + ';base64,' + Base64.encode(imgAryBuffer);
 
             }
         }
-        public setUrlToImg(img: any,imgAryBuffer:ArrayBuffer,url):void
-        {
-               // img.src = url;    //直接只读图片地址
-                img.src = 'data:image/' + "jpg" + ';base64,' + Base64.encode(imgAryBuffer);//将二进制作转在图片
-
-        }
-
 
 
         public readJpngImg($url: string): void {

@@ -20,7 +20,6 @@ var SceneUiPanel = (function (_super) {
         _this.uiLayaSceneChar = _this.addModelChar();
         _this.uiLayaSceneChar.nameEnable = true;
         _this.uiLayaSceneChar.bloodEnable = true;
-        _this.addModelChar();
         _this.ape.on(Pan3d.MouseType.MouseDown, _this, _this.onStartDrag);
         return _this;
     }
@@ -37,8 +36,8 @@ var SceneUiPanel = (function (_super) {
             this.uiLayaSceneChar.play(Pan3d.CharAction.WALK)
         }
         */
-        this.uiLayaSceneChar.moveTopos(new Pan3d.Vector2D((this.mouseX - this.ape.x) * Laya.stage.scaleX, (this.mouseY - this.ape.y) * Laya.stage.scaleY)); //坐标
-        //    this.ape.showJumpText(this.layaSceneLevel.scene, new Pan3d.Vector3D(this.uiLayaSceneChar.px, this.uiLayaSceneChar.py, this.uiLayaSceneChar.pz))
+        this.uiLayaSceneChar.moveTopos(new Pan3d.Vector2D(this.mouseX - this.ape.x, this.mouseY - this.ape.y)); //坐标
+        this.ape.showJumpText(this.layaSceneLevel.scene, new Pan3d.Vector3D(this.uiLayaSceneChar.px, this.uiLayaSceneChar.py, this.uiLayaSceneChar.pz));
         /*
         var $mouse: Pan3d.Vector2D = new Pan3d.Vector2D(this.mouseX - this.ape.x, this.mouseY - this.ape.y)
         var $tx: number = $mouse.x * layapan.LayaOverride2dEngine.htmlScale;
@@ -49,10 +48,10 @@ var SceneUiPanel = (function (_super) {
     SceneUiPanel.prototype.addModelChar = function () {
         var $baseChar = new Game2dChar();
         this.layaSceneLevel.scene.addMovieDisplay($baseChar);
-        $baseChar.setRoleUrl(getRoleUrl("erchiyuan004"));
-        // $baseChar.setMount("4104");
-        // $baseChar.setWing("902");
-        // $baseChar.setWeaponByAvatar(50011);
+        $baseChar.setRoleUrl(getRoleUrl("5103"));
+        $baseChar.setMount("4104");
+        $baseChar.setWing("902");
+        $baseChar.setWeaponByAvatar(50011);
         $baseChar.play(Pan3d.CharAction.STAND_MOUNT);
         $baseChar.forceRotationY = 145;
         $baseChar.set2dPos(400, 200); //坐标

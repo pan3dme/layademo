@@ -11,9 +11,7 @@ function angle2radian(value: number): number {
 }
 function makeImage(): any {
     var _img: any = new Image();
-    if(_img.setAttribute){
-        _img.setAttribute("crossOrigin", "anonymous");
-    }
+    _img.setAttribute("crossOrigin", "anonymous");
     return _img
 }
 

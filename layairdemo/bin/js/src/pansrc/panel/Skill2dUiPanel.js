@@ -9,7 +9,7 @@ var Skill2dUiPanel = (function (_super) {
         var _this = _super.call(this) || this;
         _this.ape = new BaseWinPanel();
         _this.addChild(_this.ape);
-        var $imag = new Laya.Image(Pan3d.Scene_data.fileRoot + "2dbg.jpg");
+        var $imag = new Laya.Image("res/2dbg.jpg");
         $imag.x = 20;
         $imag.y = 30;
         _this.ape.addChild($imag);
@@ -25,7 +25,8 @@ var Skill2dUiPanel = (function (_super) {
         return _this;
     }
     Skill2dUiPanel.prototype.loadSkill = function () {
-        this.layaSceneLevel.scene.skillManager.preLoadSkill(getSkillUrl("erchijinen004"));
+        this.layaSceneLevel.scene.skillManager.preLoadSkill(getSkillUrl("jichu_1"));
+        this.layaSceneLevel.scene.skillManager.preLoadSkill(getSkillUrl("jichu_2"));
     };
     Skill2dUiPanel.prototype.render = function (context, x, y) {
         _super.prototype.render.call(this, context, x, y);
@@ -36,13 +37,15 @@ var Skill2dUiPanel = (function (_super) {
     Skill2dUiPanel.prototype.onStartDrag = function (e) {
         //鼠标按下开始拖拽(设置了拖动区域和超界弹回的滑动效果)
         this.uiLayaSceneChar.rotationY = random(360);
-        this.layaSceneLevel.scene.charPlaySkill(this.uiLayaSceneChar, "erchijinen004");
-        //  this.ape.showJumpText(this.layaSceneLevel.scene, new Pan3d.Vector3D(this.uiLayaSceneChar.px, this.uiLayaSceneChar.py, this.uiLayaSceneChar.pz))
+        this.layaSceneLevel.scene.charPlaySkill(this.uiLayaSceneChar, "jichu_" + (Math.random() > 0.5 ? "1" : "2"));
+        this.ape.showJumpText(this.layaSceneLevel.scene, new Pan3d.Vector3D(this.uiLayaSceneChar.px, this.uiLayaSceneChar.py, this.uiLayaSceneChar.pz));
     };
     Skill2dUiPanel.prototype.addModelChar = function () {
         var $baseChar = new layapan.LayaSceneChar();
         this.layaSceneLevel.scene.addMovieDisplay($baseChar);
-        $baseChar.setRoleUrl(getRoleUrl("erchiyuan004"));
+        $baseChar.setRoleUrl(getRoleUrl("50005"));
+        $baseChar.setWing("902");
+        $baseChar.setWeaponByAvatar(50011);
         return $baseChar;
     };
     return Skill2dUiPanel;

@@ -841,7 +841,6 @@
             Scene_data.context3D.clearVa(4);
             Scene_data.context3D.clearVa(5);
             Scene_data.context3D.clearVa(6);
-        
         }
 
         public updateMaterialMesh($mesh: MeshData): void {
