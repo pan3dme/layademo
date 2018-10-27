@@ -44,7 +44,7 @@ var Launch = (function () {
         // Laya.stage.addChild(new Scene2dSprite); //基本2d场景 行走
         setTimeout(function () {
             Laya.stage.addChild(new SceneUiPanel()); //2dui场景 行走
-            Laya.stage.addChild(new Skill2dUiPanel()); //2d 技能播放
+            Laya.stage.addChild(new Game3dScene()); //2d 技能播放
         }, 20);
         //Laya.stage.addChild(new Avatar3dUiPanel()); //3d场景行走
         // Laya.stage.addChild(new Game3dScene());      //3d包含地图

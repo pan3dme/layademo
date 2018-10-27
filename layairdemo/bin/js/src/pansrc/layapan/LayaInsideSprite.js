@@ -12,7 +12,6 @@ var layapan;
         function Pan3dInSideLaya() {
         }
         Pan3dInSideLaya.overrideMethods = function () {
-            this.inited = true;
             if (this.inited) {
                 return;
             }

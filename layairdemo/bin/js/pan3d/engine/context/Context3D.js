@@ -386,7 +386,7 @@ var Pan3d;
             }
             if (tf) {
                 this.renderContext.enable(this.renderContext.CULL_FACE);
-                this.renderContext.cullFace(this.renderContext.BACK);
+                this.renderContext.cullFace(this.renderContext.FRONT);
             }
             else {
                 this.renderContext.disable(this.renderContext.CULL_FACE);

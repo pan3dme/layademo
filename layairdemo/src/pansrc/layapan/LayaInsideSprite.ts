@@ -8,7 +8,7 @@ module layapan {
 	export class Pan3dInSideLaya {
 		static inited: boolean = false;
 		static overrideMethods(): void {
- 		this.inited = true;
+ 		 
 			if (this.inited) {
 				return;
 			}

@@ -34,14 +34,15 @@ module adpterPan3d {
         }
         static adpter_Pan3d_Init(): void {
          
-            Pan3d.BaseRes.prototype.setUrlToImg = function (img: any,imgAryBuffer:ArrayBuffer,url):void{
-                if( MiniPan3dAdpter.isIphone){
-                      img.src = 'data:image/' + "jpg" + ';base64,' +Pan3d.Base64.encode(imgAryBuffer);//将二进制作转在图片
-                }else{
-                     img.src = url;    //直接只读图片地
-                }
+            // Pan3d.BaseRes.prototype.setUrlToImg = function (img: any,imgAryBuffer:ArrayBuffer,url):void{
+            //     if( MiniPan3dAdpter.isIphone){
+            //           img.src = 'data:image/' + "jpg" + ';base64,' +Pan3d.Base64.encode(imgAryBuffer);//将二进制作转在图片
+            //     }else{
+            //          img.src = url;    //直接只读图片地
+            //     }
 
-            }
+            // }
+
        
 
             Pan3d.DynamicTexItem.prototype.creatTextureByCurve = function (): void {

@@ -57,7 +57,7 @@ class Launch {
 
           setTimeout(() => {
                    Laya.stage.addChild(new SceneUiPanel()); //2dui场景 行走
-                   Laya.stage.addChild(new Skill2dUiPanel()); //2d 技能播放
+                   Laya.stage.addChild(new Game3dScene()); //2d 技能播放
         }, 20)
 
         

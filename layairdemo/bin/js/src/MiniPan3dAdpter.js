@@ -35,14 +35,13 @@ var adpterPan3d;
             }
         };
         MiniPan3dAdpter.adpter_Pan3d_Init = function () {
-            Pan3d.BaseRes.prototype.setUrlToImg = function (img, imgAryBuffer, url) {
-                if (MiniPan3dAdpter.isIphone) {
-                    img.src = 'data:image/' + "jpg" + ';base64,' + Pan3d.Base64.encode(imgAryBuffer); //将二进制作转在图片
-                }
-                else {
-                    img.src = url; //直接只读图片地
-                }
-            };
+            // Pan3d.BaseRes.prototype.setUrlToImg = function (img: any,imgAryBuffer:ArrayBuffer,url):void{
+            //     if( MiniPan3dAdpter.isIphone){
+            //           img.src = 'data:image/' + "jpg" + ';base64,' +Pan3d.Base64.encode(imgAryBuffer);//将二进制作转在图片
+            //     }else{
+            //          img.src = url;    //直接只读图片地
+            //     }
+            // }
             Pan3d.DynamicTexItem.prototype.creatTextureByCurve = function () {
                 //在手机上直接使用imageData传给纹理不正确;
                 var i = 0;
