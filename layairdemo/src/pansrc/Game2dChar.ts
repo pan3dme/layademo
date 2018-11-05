@@ -29,5 +29,15 @@
             }
         }
         super.updateFrame(t);
+        var dicAry: Array<Pan3d.CombineParticle> = this._partDic["mesh"];
+        for (var i: number = 0; dicAry && i < dicAry.length; i++) {
+            if (dicAry[i].scaleX != this.scale) {
+                dicAry[i].scaleX = this.scale
+                dicAry[i].scaleY = this.scale
+                dicAry[i].scaleZ = this.scale
+            }
+        }
     }
+
+
 }

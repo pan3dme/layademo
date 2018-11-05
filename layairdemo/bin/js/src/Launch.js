@@ -28,14 +28,6 @@ var Launch = (function () {
         mainpan3d.canvas = main.canvas;
         Pan3d.Scene_data.fileRoot = " http://" + document.domain + "/res/";
         Pan3d.Scene_data.fileRoot = "https://webpan.oss-cn-shanghai.aliyuncs.com/res/";
-        var $imag = new Laya.Image(Pan3d.Scene_data.fileRoot + "assets/white.jpg");
-        $imag.left = 0;
-        $imag.top = 0;
-        $imag.width = Browser.clientWidth * Browser.pixelRatio;
-        $imag.height = Browser.clientHeight * Browser.pixelRatio;
-        Laya.stage.addChild($imag);
-        Laya.stage.scale(Browser.pixelRatio / 2, Browser.pixelRatio / 2);
-        scene2d.Override2dEngine.htmlScale = 0.5 * Laya.stage.scaleX;
         adpterPan3d.MiniPan3dAdpter.init(function () {
             _this.loadBaseUiArt();
         });
@@ -43,7 +35,7 @@ var Launch = (function () {
     Launch.prototype.addLaya3dScene = function () {
         // Laya.stage.addChild(new Scene2dSprite); //基本2d场景 行走
         setTimeout(function () {
-            Laya.stage.addChild(new SceneUiPanel()); //2dui场景 行走
+            Laya.stage.addChild(new Scene2dSprite()); //2dui场景 行走
             Laya.stage.addChild(new Game3dScene()); //2d 技能播放
         }, 20);
         //Laya.stage.addChild(new Avatar3dUiPanel()); //3d场景行走

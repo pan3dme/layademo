@@ -35,15 +35,9 @@ class Launch {
 
 
      
-       var $imag: Laya.Image = new Laya.Image(Pan3d.Scene_data.fileRoot+"assets/white.jpg")
-       $imag.left=0;
-       $imag.top=0;
-       $imag.width=Browser.clientWidth * Browser.pixelRatio;
-       $imag.height=Browser.clientHeight * Browser.pixelRatio;
-       Laya.stage.addChild($imag);
        
-               Laya.stage.scale(Browser.pixelRatio/2,Browser.pixelRatio/2)
-               scene2d.Override2dEngine.htmlScale=0.5*  Laya.stage.scaleX
+       
+  
        adpterPan3d. MiniPan3dAdpter.init(()=>{
              this.loadBaseUiArt();
         });
@@ -56,7 +50,7 @@ class Launch {
    
 
           setTimeout(() => {
-                   Laya.stage.addChild(new SceneUiPanel()); //2dui场景 行走
+                   Laya.stage.addChild(new Scene2dSprite()); //2dui场景 行走
                    Laya.stage.addChild(new Game3dScene()); //2d 技能播放
         }, 20)
 

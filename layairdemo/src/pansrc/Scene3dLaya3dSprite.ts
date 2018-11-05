@@ -155,6 +155,7 @@ class Scene3dLaya3dSprite extends BaseLaya3dSprite {
     public camDistance: number = 700;
     public camRotationX: number = -35
     public camRotationY: number = 0;
+    public camViewLH: number = 1.76
     public camAotuMove: boolean = true
     
     private makeNewMatrix(): void {
@@ -169,7 +170,7 @@ class Scene3dLaya3dSprite extends BaseLaya3dSprite {
         var sceneViewHW = Math.min(Pan3d.Scene_data.stageWidth, Pan3d.Scene_data.stageHeight )
    
 
-        Pan3d.Scene_data.viewMatrx3D.perspectiveFieldOfViewLH(1.76, 1, 10, 2000);
+        Pan3d.Scene_data.viewMatrx3D.perspectiveFieldOfViewLH(this.camViewLH, 1, 10, 2000);
         Pan3d.Scene_data.viewMatrx3D.appendScale(1 * (sceneViewHW / fovw * 2), fovw / fovh * (sceneViewHW / fovw * 2), 1);
         this.copyViewMatrx3D = Pan3d.Scene_data.viewMatrx3D.clone();
 

@@ -34,6 +34,14 @@ var Game2dChar = (function (_super) {
             }
         }
         _super.prototype.updateFrame.call(this, t);
+        var dicAry = this._partDic["mesh"];
+        for (var i = 0; dicAry && i < dicAry.length; i++) {
+            if (dicAry[i].scaleX != this.scale) {
+                dicAry[i].scaleX = this.scale;
+                dicAry[i].scaleY = this.scale;
+                dicAry[i].scaleZ = this.scale;
+            }
+        }
     };
     return Game2dChar;
 }(layapan.LayaSceneChar));

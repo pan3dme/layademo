@@ -88,6 +88,7 @@ var Scene3dLaya3dSprite = (function (_super) {
         _this.camDistance = 700;
         _this.camRotationX = -35;
         _this.camRotationY = 0;
+        _this.camViewLH = 1.76;
         _this.camAotuMove = true;
         return _this;
     }
@@ -144,7 +145,7 @@ var Scene3dLaya3dSprite = (function (_super) {
         var fovw = Pan3d.Scene_data.stageWidth;
         var fovh = Pan3d.Scene_data.stageHeight;
         var sceneViewHW = Math.min(Pan3d.Scene_data.stageWidth, Pan3d.Scene_data.stageHeight);
-        Pan3d.Scene_data.viewMatrx3D.perspectiveFieldOfViewLH(1.76, 1, 10, 2000);
+        Pan3d.Scene_data.viewMatrx3D.perspectiveFieldOfViewLH(this.camViewLH, 1, 10, 2000);
         Pan3d.Scene_data.viewMatrx3D.appendScale(1 * (sceneViewHW / fovw * 2), fovw / fovh * (sceneViewHW / fovw * 2), 1);
         this.copyViewMatrx3D = Pan3d.Scene_data.viewMatrx3D.clone();
         Pan3d.Scene_data.cam3D.distance = this.camDistance;
